@@ -45,6 +45,11 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void ActivatePauseMenuUI(bool pause)
+    {
+        pauseMenuUI.SetActive(pause);
+    }
+
     public void ActivateLoseMenuUI()
     {
         loseMenuUI.SetActive(true);

@@ -19,14 +19,17 @@ public class HealthComponent : MonoBehaviour
 
     void Update()
     {
-        if(currentHealth <= 0)
+        if (CountupTimer.instance.TimeStopped())
+            return;
+
+        if (currentHealth <= 0)
         {
             UIManager.instance.UpdateHealth();
-            currentHealth = 0;
+            currentHealth = maxHealth;
             Debug.Log("You are Dead!!!!");
 
             UIManager.instance.ActivateLoseMenuUI();
-            //Time.timeScale = 0f;
+            CountupTimer.instance.SetTimeScale(0f);
         }
     }
 
