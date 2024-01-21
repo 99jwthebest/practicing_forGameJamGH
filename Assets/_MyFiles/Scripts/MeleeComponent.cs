@@ -11,10 +11,14 @@ public class MeleeComponent : MonoBehaviour
     float lastClickedTime = 0f;
     float maxComboDelay = 1;
 
+    public GameObject meleeWeapon;
     public bool canDodge;
     public bool canBlock;
+    public bool canMelee;
+    public Quaternion endRotation;
+    public float rotation = 10f;
 
-    public float slashRange = 3f;
+    //public float slashRange = 3f;
     public Transform slashPoint_Transform;
     public float slashPoint_Range = 2f;
 
@@ -26,32 +30,35 @@ public class MeleeComponent : MonoBehaviour
     {
         //staminaBar = GetComponent<StaminaBar>(); //searches inspector for component
 
-        anim = GetComponent<Animator>();
-        canDodge = true;
-        canBlock = true;
+        //anim = GetComponent<Animator>();
+        //canDodge = true;
+        //canBlock = true;
+        canMelee = true;
+        endRotation = meleeWeapon.transform.localRotation;
+        endRotation.z = rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
-        {
-            anim.SetBool("hit1", false);
-        }
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
-        {
-            anim.SetBool("hit2", false);
-        }
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
-        {
-            anim.SetBool("hit3", false);
-            noOfClicks = 0;
-        }
+        //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+        //{
+        //    anim.SetBool("hit1", false);
+        //}
+        //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
+        //{
+        //    anim.SetBool("hit2", false);
+        //}
+        //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
+        //{
+        //    anim.SetBool("hit3", false);
+        //    noOfClicks = 0;
+        //}
 
-        if (Time.time - lastClickedTime > maxComboDelay)
-        {
-            noOfClicks = 0;
-        }
+        //if (Time.time - lastClickedTime > maxComboDelay)
+        //{
+        //    noOfClicks = 0;
+        //}
 
         ////cooldown time
         //if (Time.time > nextFireTime)
@@ -67,32 +74,32 @@ public class MeleeComponent : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetMouseButton(1))
-        {
-            if (canBlock == true)
-            {
-                UseBlock();
-            }
-
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            anim.SetBool("isBlocking", false);
-        }
-
-        //if (Input.GetMouseButtonDown(2))
+        //if (Input.GetMouseButton(1))
         //{
+        //    if (canBlock == true)
+        //    {
+        //        UseBlock();
+        //    }
 
-        //    //UseDodge();
-        //    if (canDodge == true && staminaBar.currentStamina > 14)
-        //    {
-        //        UseDodge();
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("Can't Dodge Yet");
-        //    }
         //}
+        //if (Input.GetMouseButtonUp(1))
+        //{
+        //    anim.SetBool("isBlocking", false);
+        //}
+
+        if (Input.GetMouseButtonDown(1))
+        {
+
+            //UseDodge();
+            if (canMelee == true)
+            {
+                UseMelee();
+            }
+            else
+            {
+                Debug.Log("Can't Melee Yet");
+            }
+        }
     }
 
     public void SlashEM()
@@ -141,6 +148,21 @@ public class MeleeComponent : MonoBehaviour
         anim.ResetTrigger("dodge");
     }
 
+    public void UseMelee()
+    {
+        //canMelee = false;
+        SlashEM();
+        //meleeWeapon.transform.localRotation = Quaternion.Lerp(meleeWeapon.transform.localRotation, endRotation, 1 * Time.deltaTime);
+        //anim.SetTrigger("dodge");
+    }
+
+    public void MeleeReset()
+    {
+        canMelee = true;
+
+        //anim.ResetTrigger("dodge");
+    }
+
     void OnClick()
     {
         lastClickedTime = Time.time;
@@ -166,8 +188,8 @@ public class MeleeComponent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, slashRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, slashRange);
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(slashPoint_Transform.position, slashPoint_Range);
