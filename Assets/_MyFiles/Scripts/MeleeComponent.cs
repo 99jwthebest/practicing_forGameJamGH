@@ -111,7 +111,7 @@ public class MeleeComponent : MonoBehaviour
             if (target.CompareTag("Enemy"))
             {
                 //Add Damage
-                //GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyHealth>().DamageEnemy(20);
+                target.GetComponent<HealthComponent>().TakeDamage(1);
                 Debug.Log("Enemy Slashed!!!");
             }
         }

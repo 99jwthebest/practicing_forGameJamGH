@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] HealthComponent playerHealthComponent;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI ticketPickupCountText;
+    [SerializeField] TextMeshProUGUI totalScoreText;
 
     [SerializeField] GameObject pauseMenuUI;
     [SerializeField] GameObject winMenuUI;
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth()
     {
-        playerHealthComponent.TakeDamage(1);
+        //playerHealthComponent.TakeDamage(1);
         healthText.text = "Health: " + playerHealthComponent.GetCurrentHealth().ToString();
     }
 
@@ -45,9 +46,20 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void UpdateTotalScoreText()
+    {
+        totalScoreText.text = "Score: " + ScoreManager.instance.GetTotalScore();
+
+    }
+
     public void ActivatePauseMenuUI(bool pause)
     {
         pauseMenuUI.SetActive(pause);
+    }
+
+    public void ActivateWinMenuUI()
+    {
+        winMenuUI.SetActive(true);
     }
 
     public void ActivateLoseMenuUI()

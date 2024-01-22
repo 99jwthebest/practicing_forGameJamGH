@@ -26,10 +26,11 @@ public class HealthComponent : MonoBehaviour
         {
             UIManager.instance.UpdateHealth();
             currentHealth = maxHealth;
-            Debug.Log("You are Dead!!!!");
 
-            UIManager.instance.ActivateLoseMenuUI();
-            CountupTimer.instance.SetTimeScale(0f);
+            DeathComponent deathComponent = GetComponent<DeathComponent>();
+
+            deathComponent.PlayerDeath();
+            deathComponent.EnemyDeath();
         }
     }
 

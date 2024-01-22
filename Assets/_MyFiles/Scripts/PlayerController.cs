@@ -67,10 +67,10 @@ public class PlayerController : MonoBehaviour
         else if (move < 0 && facingRight)
             Flip();
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            UIManager.instance.UpdateHealth();
-        }
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    UIManager.instance.UpdateHealth();
+        //}
     }
 
     private void Jump()
