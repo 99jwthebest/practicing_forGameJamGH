@@ -22,8 +22,10 @@ public class EnemyDamageComponent : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             playerHealthComponent.TakeDamage(1);
+            UIManager.instance.UpdateHealth();
             Debug.Log("Enemy Damaged Player!!!");
         }
+
     }
 
 }

@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI ticketPickupCountText;
     [SerializeField] TextMeshProUGUI totalScoreText;
+    [SerializeField] TextMeshProUGUI pieText;
+
 
     [SerializeField] GameObject pauseMenuUI;
     [SerializeField] GameObject winMenuUI;
@@ -25,7 +27,8 @@ public class UIManager : MonoBehaviour
     {
         UpdateHealth();
         UpdateTicketCountText();
-
+        UpdateTotalScoreText();
+        UpdatePieText();
     }
 
     // Update is called once per frame
@@ -36,7 +39,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth()
     {
-        //playerHealthComponent.TakeDamage(1);
         healthText.text = "Health: " + playerHealthComponent.GetCurrentHealth().ToString();
     }
 
@@ -49,6 +51,12 @@ public class UIManager : MonoBehaviour
     public void UpdateTotalScoreText()
     {
         totalScoreText.text = "Score: " + ScoreManager.instance.GetTotalScore();
+
+    }
+
+    public void UpdatePieText()
+    {
+        pieText.text = "Pies: " + ScoreManager.instance.GetTotalScore();
 
     }
 

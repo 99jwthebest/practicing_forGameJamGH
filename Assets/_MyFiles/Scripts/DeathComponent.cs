@@ -32,7 +32,8 @@ public class DeathComponent : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Enemy is dead!!!");
-            ScoreManager.instance.IncrementScore();
+            AudienceAppraisalMeter.instance.ComboRefillBar(100);
+            ScoreManager.instance.IncrementScore(200);
             Destroy(gameObject);
 
         }

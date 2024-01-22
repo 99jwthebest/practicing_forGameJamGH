@@ -20,7 +20,8 @@ public class PickupComponent : MonoBehaviour
         if(collision.transform.tag == "Player")
         {
             ScoreManager.instance.IncrementTicketCount();
-            Debug.Log("What in the flying fucker!!!");
+            ScoreManager.instance.IncrementScore(100);
+            AudienceAppraisalMeter.instance.ComboRefillBar(20);
         }
     }
 

@@ -121,11 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8882e110250df5e4e84757cf1be08183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementType: 0
   startPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
-  enemyTravelDistance: 5
+  travelDistance: 5
   distancedTraveled: {x: 0, y: 0, z: 0}
-  movingRight: 0
+  movingToEndPos: 0
+  directionToMoveGlobal: {x: 0, y: 0, z: 0}
 --- !u!114 &1325108704414739755
 MonoBehaviour:
   m_ObjectHideFlags: 0

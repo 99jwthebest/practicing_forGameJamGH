@@ -7,6 +7,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     [SerializeField] int ticketCountTotal;
     [SerializeField] int totalScore;
+    [SerializeField] int totalPies;
+
 
     private void Awake()
     {
@@ -14,7 +16,7 @@ public class ScoreManager : MonoBehaviour
 
         ticketCountTotal = 0;
         totalScore = 0;
-
+        totalPies = 0;
     }
 
 
@@ -40,9 +42,9 @@ public class ScoreManager : MonoBehaviour
         UIManager.instance.UpdateTicketCountText();
     }
 
-    public void IncrementScore()
+    public void IncrementScore(int amount)
     {
-        totalScore++;
+        totalScore += amount;
         UIManager.instance.UpdateTotalScoreText();
     }
 
@@ -52,6 +54,18 @@ public class ScoreManager : MonoBehaviour
         UIManager.instance.UpdateTotalScoreText();
     }
 
+    public void IncrementPies()
+    {
+        totalPies++;
+        UIManager.instance.UpdatePieText();
+    }
+
+    public void DecrementPies()
+    {
+        totalPies--;
+        UIManager.instance.UpdatePieText();
+
+    }
 
     public int GetTicketCountTotal()
     {
@@ -61,5 +75,10 @@ public class ScoreManager : MonoBehaviour
     public int GetTotalScore()
     {
         return totalScore;
+    }
+
+    public int GetTotalPies()
+    {
+        return totalPies;
     }
 }
