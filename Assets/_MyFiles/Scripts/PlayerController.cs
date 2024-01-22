@@ -95,6 +95,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void GroundSlam()
+    {
+
+    }
+
     private void Flip()
     {
         facingRight = !facingRight;
@@ -109,5 +114,10 @@ public class PlayerController : MonoBehaviour
             return 1;
         else 
             return -1;
+    }
+
+    public bool GetIsGrounded()
+    {
+        return isGrounded;
     }
 }

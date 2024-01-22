@@ -17,18 +17,27 @@ public class FireBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerController playerController = transform.root.GetComponent<PlayerController>();
-
-        if(Input.GetAxisRaw("Fire1") > 0 && nextBullet < Time.time)
+        if (AmmoComponent.instance.CheckIfEmptyAmmo())
         {
-            nextBullet = Time.time + timeBetweenBullets;
-            Vector3 rot;
-            if (playerController.GetPlayerDirection() == -1f)
-                rot = new Vector3(0, -90, 0);
-            else
-                rot = new Vector3(0, 90, 0);
 
-            Instantiate(projectile, transform.position, Quaternion.Euler(rot));
+        }
+        else
+        {
+            PlayerController playerController = transform.root.GetComponent<PlayerController>();
+
+            if(Input.GetAxisRaw("Fire1") > 0 && nextBullet < Time.time)
+            {
+                nextBullet = Time.time + timeBetweenBullets;
+                Vector3 rot;
+                if (playerController.GetPlayerDirection() == -1f)
+                    rot = new Vector3(0, -90, 0);
+                else
+                    rot = new Vector3(0, 90, 0);
+
+                Instantiate(projectile, transform.position, Quaternion.Euler(rot));
+                AmmoComponent.instance.DecrementAmmo();
+            }
+
         }
     }
 }

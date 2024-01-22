@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePieText()
     {
-        pieText.text = "Pies: " + ScoreManager.instance.GetTotalScore();
+        pieText.text = "Pies: " + AmmoComponent.instance.GetAmmo();
 
     }
 

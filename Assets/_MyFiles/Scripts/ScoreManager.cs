@@ -56,13 +56,13 @@ public class ScoreManager : MonoBehaviour
 
     public void IncrementPies()
     {
-        totalPies++;
+        //totalPies ;
         UIManager.instance.UpdatePieText();
     }
 
     public void DecrementPies()
     {
-        totalPies--;
+        //totalPies--;
         UIManager.instance.UpdatePieText();
 
     }

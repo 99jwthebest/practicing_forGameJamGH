@@ -33,7 +33,7 @@ public class DeathComponent : MonoBehaviour
         {
             Debug.Log("Enemy is dead!!!");
             AudienceAppraisalMeter.instance.ComboRefillBar(100);
-            ScoreManager.instance.IncrementScore(200);
+            ScoreManager.instance.IncrementScore(500);
             Destroy(gameObject);
 
         }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -627986171352029586}
   - component: {fileID: 8978027298481390456}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: ConfettiTempForAnimal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
