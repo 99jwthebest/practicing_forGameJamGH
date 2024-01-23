@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickupComponent : MonoBehaviour
 {
+    [SerializeField] int scoreForTicket;
+
     void Start()
     {
 
@@ -20,8 +22,9 @@ public class PickupComponent : MonoBehaviour
         if(collision.transform.tag == "Player")
         {
             ScoreManager.instance.IncrementTicketCount();
-            ScoreManager.instance.IncrementScore(100);
+            ScoreManager.instance.IncrementScore(scoreForTicket);
             AudienceAppraisalMeter.instance.ComboRefillBar(20);
+            Destroy(gameObject);    
         }
     }
 

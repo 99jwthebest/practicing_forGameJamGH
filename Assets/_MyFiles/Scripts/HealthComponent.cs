@@ -7,6 +7,8 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth;
 
+    [SerializeField] DeathComponent deathComponent;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -27,7 +29,6 @@ public class HealthComponent : MonoBehaviour
             UIManager.instance.UpdateHealth();
             currentHealth = maxHealth;
 
-            DeathComponent deathComponent = GetComponent<DeathComponent>();
 
             deathComponent.PlayerDeath();
             deathComponent.EnemyDeath();

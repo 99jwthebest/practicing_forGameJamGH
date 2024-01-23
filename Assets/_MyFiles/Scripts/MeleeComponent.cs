@@ -191,7 +191,7 @@ public class MeleeComponent : MonoBehaviour
         //Gizmos.color = Color.red;
         //Gizmos.DrawWireSphere(transform.position, slashRange);
 
-        Gizmos.color = Color.cyan;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(slashPoint_Transform.position, slashPoint_Range);
     }
 }

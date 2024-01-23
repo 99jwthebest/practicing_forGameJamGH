@@ -6,6 +6,7 @@ public class EnemyDamageComponent : MonoBehaviour
 {
     [SerializeField] HealthComponent playerHealthComponent;
 
+
     void Start()
     {
         //playerHealthComponent = FindObjectOfType<PlayerController>().GetComponent<HealthComponent>();
@@ -27,5 +28,7 @@ public class EnemyDamageComponent : MonoBehaviour
         }
 
     }
+
+ 
 
 }

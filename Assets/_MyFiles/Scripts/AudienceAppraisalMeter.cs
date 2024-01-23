@@ -25,6 +25,7 @@ public class AudienceAppraisalMeter : MonoBehaviour
     //public TextMeshProUGUI comboNumberText;
     //public GameObject comboObj;
     //public int highestCombo;
+    [SerializeField] int timeForAudienceBarToDrain; 
 
     private void Awake()
     {
@@ -88,15 +89,17 @@ public class AudienceAppraisalMeter : MonoBehaviour
         }
     }
 
+
+
     private IEnumerator DegenComboN()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         while (currentComboValue > 0)
         {
             currentComboValue -= maxComboValue / 100;
             SetComboValue(currentComboValue);
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.2f);
         }
 
         //comboNumber = 0;
@@ -106,5 +109,9 @@ public class AudienceAppraisalMeter : MonoBehaviour
         degenCombo = null;
     }
     
+    public void IncrementTimeForAudienceDrain(int amount)
+    {
+        timeForAudienceBarToDrain += amount;
+    }
 
 }

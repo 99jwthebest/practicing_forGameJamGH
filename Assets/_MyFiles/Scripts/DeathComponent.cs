@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DeathComponent : MonoBehaviour
 {
+    [SerializeField] int scoreForEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,16 +28,18 @@ public class DeathComponent : MonoBehaviour
         }
 
     }
-
     public void EnemyDeath()
     {
         if (gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Enemy is dead!!!");
             AudienceAppraisalMeter.instance.ComboRefillBar(100);
-            ScoreManager.instance.IncrementScore(200);
+            //AudienceAppraisalMeter.instance.IncrementTimeForAudienceDrain(2);
+
+            ScoreManager.instance.IncrementScore(scoreForEnemy);
             Destroy(gameObject);
 
         }
     }
+
 }

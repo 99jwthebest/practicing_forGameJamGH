@@ -5094,6 +5094,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   damage: 5
+  speed: 5
+  slashPoint_Transform: {fileID: 0}
+  slashPoint_Range: 2
+  hitTargets: []
 --- !u!114 &8978027298481390456
 MonoBehaviour:
   m_ObjectHideFlags: 0
