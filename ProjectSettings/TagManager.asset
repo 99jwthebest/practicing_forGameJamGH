@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Bullet
   - EnemyAi
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

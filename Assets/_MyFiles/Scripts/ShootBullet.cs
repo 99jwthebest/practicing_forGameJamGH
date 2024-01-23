@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShootBullet : MonoBehaviour
 {
     [SerializeField] float range = 10f;
-    [SerializeField] float damage = 5f;
+    [SerializeField] int damage = 5;
     [SerializeField] float speed = 5f;
     public Transform slashPoint_Transform;
     public float slashPoint_Range = 2f;
@@ -50,7 +50,7 @@ public class ShootBullet : MonoBehaviour
             if (target.CompareTag("Enemy"))
             {
                 //Add Damage
-                target.GetComponent<HealthComponent>().TakeDamage(2);
+                target.GetComponent<HealthComponent>().TakeDamage(damage);
                 Debug.Log("Enemy HITTTTTT!!!");
                 Destroy(gameObject);
             }

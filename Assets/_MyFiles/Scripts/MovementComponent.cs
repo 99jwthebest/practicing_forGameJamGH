@@ -21,6 +21,7 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] Vector3 distancedTraveled;
     [SerializeField] bool movingToEndPos;
     [SerializeField] Vector3 directionToMoveGlobal;
+    [SerializeField] float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class MovementComponent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateDirectionForObjectToMove();
 
@@ -89,7 +90,7 @@ public class MovementComponent : MonoBehaviour
                 distancedTraveled.x = transform.position.x - startPosition.x;
                 if (movingToEndPos)
                 {
-                    transform.Translate(Vector3.right * Time.deltaTime * 3);
+                    transform.Translate(Vector3.right * speed * Time.deltaTime);
 
                     if (distancedTraveled.x >= travelDistance)
                     {
@@ -98,7 +99,7 @@ public class MovementComponent : MonoBehaviour
                 }
                 else
                 {
-                    transform.Translate(Vector3.left * Time.deltaTime * 3);
+                    transform.Translate(Vector3.left * speed * Time.deltaTime);
 
                     if (distancedTraveled.x <= 0)
                     {
@@ -112,7 +113,7 @@ public class MovementComponent : MonoBehaviour
 
                 if (movingToEndPos)
                 {
-                    transform.Translate(Vector3.left * Time.deltaTime * 3);
+                    transform.Translate(Vector3.left * Time.deltaTime * speed);
 
                     if (distancedTraveled.x >= travelDistance)
                     {
@@ -121,7 +122,7 @@ public class MovementComponent : MonoBehaviour
                 }
                 else
                 {
-                    transform.Translate(Vector3.right * Time.deltaTime * 3);
+                    transform.Translate(Vector3.right * Time.deltaTime * speed);
 
                     if (distancedTraveled.x <= 0)
                     {
@@ -134,7 +135,7 @@ public class MovementComponent : MonoBehaviour
                 distancedTraveled.y = transform.position.y - startPosition.y;
                 if (movingToEndPos)
                 {
-                    transform.Translate(Vector3.up * Time.deltaTime * 3);
+                    transform.Translate(Vector3.up * Time.deltaTime * speed);
 
                     if (distancedTraveled.y >= travelDistance)
                     {
@@ -143,7 +144,7 @@ public class MovementComponent : MonoBehaviour
                 }
                 else
                 {
-                    transform.Translate(Vector3.down * Time.deltaTime * 3);
+                    transform.Translate(Vector3.down * Time.deltaTime * speed);
 
                     if (distancedTraveled.y <= 0)
                     {
@@ -157,7 +158,7 @@ public class MovementComponent : MonoBehaviour
                 distancedTraveled.y = (transform.position.y - startPosition.y) * -1;
                 if (movingToEndPos)
                 {
-                    transform.Translate(Vector3.down * Time.deltaTime * 3);
+                    transform.Translate(Vector3.down * Time.deltaTime * speed);
 
                     if (distancedTraveled.y >= travelDistance)
                     {
@@ -166,7 +167,7 @@ public class MovementComponent : MonoBehaviour
                 }
                 else
                 {
-                    transform.Translate(Vector3.up * Time.deltaTime * 3);
+                    transform.Translate(Vector3.up * Time.deltaTime * speed);
 
                     if (distancedTraveled.y <= 0)
                     {
@@ -178,6 +179,33 @@ public class MovementComponent : MonoBehaviour
         }
 
         //return directionToMove;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(gameObject.tag != "Enemy")
+        {
+            if(collision.gameObject.tag == "Player")
+            {
+                Debug.Log("Are yoU DOING THIS!!?!?!?");
+                collision.gameObject.transform.SetParent(transform);
+            }
+        }
+    }
+
+    
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (gameObject.tag != "Enemy")
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                //PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+                //playerController.onMovingPlatform = false;
+                collision.gameObject.transform.SetParent(null);
+            }
+        }
     }
 
 }

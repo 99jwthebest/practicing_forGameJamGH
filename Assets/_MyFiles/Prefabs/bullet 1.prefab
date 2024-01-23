@@ -5095,7 +5095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  damage: 5
+  damage: 3
   speed: 5
   slashPoint_Transform: {fileID: 6002327727549592483}
   slashPoint_Range: 0.35
