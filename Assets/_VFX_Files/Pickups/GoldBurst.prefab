@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6228872507238173643}
   - component: {fileID: 2954080950998784391}
   m_Layer: 0
-  m_Name: Burst
+  m_Name: GoldBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
