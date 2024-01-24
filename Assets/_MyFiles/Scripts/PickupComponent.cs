@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PickupComponent : MonoBehaviour
 {
-    [SerializeField] int scoreForTicket;
+    [SerializeField] float scoreForTicket;
+    [SerializeField] GameObject particleObject;
+
 
     void Start()
     {
@@ -24,6 +27,7 @@ public class PickupComponent : MonoBehaviour
             ScoreManager.instance.IncrementTicketCount();
             ScoreManager.instance.IncrementScore(scoreForTicket);
             AudienceAppraisalMeter.instance.ComboRefillBar(20);
+            Instantiate(particleObject, transform.position, Quaternion.identity);
             Destroy(gameObject);    
         }
     }

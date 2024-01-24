@@ -27,6 +27,9 @@ public class GroundSlamComponent : MonoBehaviour
     //public Slider comboSlider;
     private Coroutine degenCombo;
 
+    [SerializeField] GameObject particleObject;
+
+
     void Awake()
     {
         slashPoint_Transform = transform;
@@ -117,6 +120,7 @@ public class GroundSlamComponent : MonoBehaviour
                     target.GetComponent<HealthComponent>().TakeDamage(2);
                     Debug.Log("Enemy HITTTTTT!!!");
                     //Destroy(gameObject);
+
                 }
                 else
                 {
@@ -130,6 +134,7 @@ public class GroundSlamComponent : MonoBehaviour
         //comboNumberText.text = "Combo: " + comboNumber;
         //comboObj.SetActive(false);
 
+        Instantiate(particleObject, transform.position, Quaternion.identity);
         degenCombo = null;
     }
 

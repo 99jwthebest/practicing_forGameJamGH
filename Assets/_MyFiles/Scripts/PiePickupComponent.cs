@@ -5,6 +5,7 @@ using UnityEngine;
 public class PiePickupComponent : MonoBehaviour
 {
     [SerializeField] int scoreForPies;
+    [SerializeField] GameObject particleObject;
 
 
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class PiePickupComponent : MonoBehaviour
                 AmmoComponent.instance.IncrementAmmo();
                 ScoreManager.instance.IncrementScore(scoreForPies);
                 AudienceAppraisalMeter.instance.ComboRefillBar(40);
+                Instantiate(particleObject, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

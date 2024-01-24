@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] int currentHealth;
+    [SerializeField] float currentHealth;
     [SerializeField] int maxHealth;
 
     [SerializeField] DeathComponent deathComponent;
@@ -35,12 +35,12 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageValue)
+    public void TakeDamage(float damageValue)
     {
         currentHealth -= damageValue;
     }
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }

@@ -6,8 +6,11 @@ public class AmmoComponent : MonoBehaviour
 {
     public static AmmoComponent instance;
 
-    [SerializeField] int ammoForPies;
-    [SerializeField] int maxAmmo;
+    [SerializeField] float ammoForPies;
+    [SerializeField] float maxAmmo;
+
+    public int twice;
+
 
     private void Awake()
     {
@@ -39,7 +42,7 @@ public class AmmoComponent : MonoBehaviour
 
     }
 
-    public int GetAmmo()
+    public float GetAmmo()
     {
         return ammoForPies;
     }

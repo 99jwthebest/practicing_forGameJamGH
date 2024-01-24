@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.ProBuilder;
 
 public class DeathComponent : MonoBehaviour
 {
     [SerializeField] int scoreForEnemy;
+    [SerializeField] GameObject particleObject;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +39,13 @@ public class DeathComponent : MonoBehaviour
             Debug.Log("Enemy is dead!!!");
             AudienceAppraisalMeter.instance.ComboRefillBar(100);
             //AudienceAppraisalMeter.instance.IncrementTimeForAudienceDrain(2);
-
+            Instantiate(particleObject, transform.position, Quaternion.identity);
             ScoreManager.instance.IncrementScore(scoreForEnemy);
             Destroy(gameObject);
 
         }
     }
+
+
 
 }
