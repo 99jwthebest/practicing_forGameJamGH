@@ -47,10 +47,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+  
+    public bool GetGroundedRealTime()
     {
-
-        
+        groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        return groundCollisions.Length > 0;
     }
 
     void Update()
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
-        if(groundCollisions.Length > 0)
+        if (groundCollisions.Length > 0)
             isGrounded = true;
         else
             isGrounded = false;
@@ -89,10 +90,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash)
             StartCoroutine(Dash());
 
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    UIManager.instance.UpdateHealth();
-        //}
     }
 
     private void Jump()

@@ -63,7 +63,7 @@ public class GroundSlamComponent : MonoBehaviour
             && nextSlam < Time.time)
         {
             StartGroundSlam();
-            Debug.Log("What the fuck?!?!?");
+            Debug.Log(" Ground slam?!?!?");
 
         }
 
@@ -73,24 +73,13 @@ public class GroundSlamComponent : MonoBehaviour
     public void StartGroundSlam()
     {
 
-        //currentComboValue += refillBar;
-        //SetComboValue(currentComboValue);
-
         if (degenCombo != null)
         {
             StopCoroutine(degenCombo);
         }
 
         degenCombo = StartCoroutine(GroundSlamTravel());
-
-        //if (currentComboValue >= maxComboValue)
-        //{
-        //    currentComboValue = maxComboValue;
-        //}
-        //if (currentComboValue <= 0)
-        //{
-        //    currentComboValue = 0;
-        //}
+       
     }
 
     private IEnumerator GroundSlamTravel()
@@ -113,11 +102,11 @@ public class GroundSlamComponent : MonoBehaviour
             //gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
         }
 
-        while (!playerController.GetIsGrounded())
+        while (!playerController.GetGroundedRealTime())
         {
 
             Debug.Log("WHYYYYY!!!!!!!");
-            transform.position = Vector3.MoveTowards(transform.position, shootRay.origin + shootRay.direction * range, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, shootRay.origin + shootRay.direction * range, speed * 0.007f);
 
             hitTargets = Physics.OverlapSphere(slashPoint_Transform.position, slashPoint_Range);
             foreach (var target in hitTargets)
@@ -135,8 +124,9 @@ public class GroundSlamComponent : MonoBehaviour
 
                 }
             }
-            yield return new WaitForSeconds(.01f);
+            yield return new WaitForSeconds(0.007f);
         }
+        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0, playerRigidbody.velocity.z);
 
         playerRigidbody.AddForce(new Vector3(0, 20, 0), ForceMode.Impulse);
         isSlamming = false;
