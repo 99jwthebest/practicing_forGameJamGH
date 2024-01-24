@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyDamageComponent : MonoBehaviour
 {
     [SerializeField] HealthComponent playerHealthComponent;
-
+    [SerializeField] int damagePlayer;
 
     void Start()
     {
@@ -22,7 +22,8 @@ public class EnemyDamageComponent : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            playerHealthComponent.TakeDamage(1);
+            playerHealthComponent.TakeDamage(damagePlayer);
+            
             UIManager.instance.UpdateHealth();
             Debug.Log("Enemy Damaged Player!!!");
         }

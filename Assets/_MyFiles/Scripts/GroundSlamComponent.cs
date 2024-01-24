@@ -5,7 +5,11 @@ using UnityEngine;
 public class GroundSlamComponent : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] Rigidbody playerRigidbody;
 
+    [SerializeField] bool isSlamming;
+    [SerializeField] float timeBetweenSlams = 1f;
+    float nextSlam;
     [SerializeField] float range = 20f;
     [SerializeField] float damage = 5f;
     [SerializeField] float speed = 5f;
@@ -26,6 +30,9 @@ public class GroundSlamComponent : MonoBehaviour
     private int currentComboValue;
     //public Slider comboSlider;
     private Coroutine degenCombo;
+
+    [SerializeField] GameObject particleObject;
+
 
     void Awake()
     {
@@ -51,7 +58,9 @@ public class GroundSlamComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && !isSlamming 
+            && !playerController.GetIsGrounded() 
+            && nextSlam < Time.time)
         {
             StartGroundSlam();
             Debug.Log("What the fuck?!?!?");
@@ -88,6 +97,8 @@ public class GroundSlamComponent : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         Debug.Log("It is heree!!!!!?!?");
+        isSlamming = true;
+        nextSlam = Time.time + timeBetweenSlams;
 
         shootRay.origin = transform.position; // instantiate at the muzzle location
         shootRay.direction = -transform.up;
@@ -117,6 +128,7 @@ public class GroundSlamComponent : MonoBehaviour
                     target.GetComponent<HealthComponent>().TakeDamage(2);
                     Debug.Log("Enemy HITTTTTT!!!");
                     //Destroy(gameObject);
+
                 }
                 else
                 {
@@ -126,10 +138,10 @@ public class GroundSlamComponent : MonoBehaviour
             yield return new WaitForSeconds(.01f);
         }
 
-        //comboNumber = 0;
-        //comboNumberText.text = "Combo: " + comboNumber;
-        //comboObj.SetActive(false);
+        playerRigidbody.AddForce(new Vector3(0, 20, 0), ForceMode.Impulse);
+        isSlamming = false;
 
+        Instantiate(particleObject, transform.position, Quaternion.identity);
         degenCombo = null;
     }
 

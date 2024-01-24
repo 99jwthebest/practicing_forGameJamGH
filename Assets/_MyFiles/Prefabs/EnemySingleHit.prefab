@@ -8,10 +8,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1281703832466624004, guid: 3cc646854e4c1dc468e4fa614450f67c,
+        type: 3}
+      propertyPath: damagePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4894418994665949400, guid: 3cc646854e4c1dc468e4fa614450f67c,
         type: 3}
       propertyPath: m_Name
-      value: Enemy Variant
+      value: EnemySingleHit
       objectReference: {fileID: 0}
     - target: {fileID: 6469557242723921079, guid: 3cc646854e4c1dc468e4fa614450f67c,
         type: 3}

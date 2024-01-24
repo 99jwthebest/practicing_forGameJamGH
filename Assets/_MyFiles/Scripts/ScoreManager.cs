@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    [SerializeField] int ticketCountTotal;
-    [SerializeField] int totalScore;
+    [SerializeField] float ticketCountTotal;
+    [SerializeField] float totalScore;
     [SerializeField] int totalPies;
 
 
@@ -67,12 +67,12 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public int GetTicketCountTotal()
+    public float GetTicketCountTotal()
     {
         return ticketCountTotal;
     }
 
-    public int GetTotalScore()
+    public float GetTotalScore()
     {
         return totalScore;
     }

@@ -40,7 +40,7 @@ public class HealthComponent : MonoBehaviour
         currentHealth -= damageValue;
     }
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }

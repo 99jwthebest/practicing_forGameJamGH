@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded && Input.GetKeyDown(KeyCode.Space) && jumpCount >= 1)
         {
             Debug.Log("Only in here when in air!");
+            playerRigidBody.Sleep();
             playerRigidBody.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
 
             jumpCount = 0;
