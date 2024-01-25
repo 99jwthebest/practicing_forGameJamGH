@@ -5094,9 +5094,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248050135b28ce241b34a2e5974b3189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 20
   damage: 3
-  speed: 5
+  speed: 20
   slashPoint_Transform: {fileID: 6002327727549592483}
   slashPoint_Range: 0.35
   hitTargets: []
