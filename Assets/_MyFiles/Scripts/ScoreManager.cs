@@ -47,7 +47,7 @@ public class ScoreManager : MonoBehaviour
         UIManager.instance.UpdateTicketCountText();
     }
 
-    public void IncrementScore(float amount)
+    public void IncrementScore(int amount)
     {
         totalScore += amount;
         UIManager.instance.UpdateTotalScoreText();
