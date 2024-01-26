@@ -18,7 +18,7 @@ public class ShootBullet : MonoBehaviour
     LineRenderer gunLine;
 
     [SerializeField] Collider[] hitTargets;
-    [SerializeField] GameObject particleObject;
+    //[SerializeField] GameObject particleObject;
 
 
     void Awake()
@@ -57,7 +57,7 @@ public class ShootBullet : MonoBehaviour
                 target.GetComponent<HealthComponent>().TakeDamage(damage);
                 Debug.Log("Enemy HITTTTTT!!!");
 
-                Instantiate(particleObject, transform.position, Quaternion.identity);
+                //Instantiate(particleObject, transform.position, Quaternion.identity);
                 
                 Destroy(gameObject);
             }

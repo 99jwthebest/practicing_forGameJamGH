@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForTicket: 50
-  particleObject: {fileID: 2310377004175130935, guid: cb41b11c4a623424c8295d1facba72fb,
+  particleObject: {fileID: 2310377004175130935, guid: 014d3ab14b78dc74fbe01834f9958938,
     type: 3}
 --- !u!114 &6914853211477606459
 MonoBehaviour:

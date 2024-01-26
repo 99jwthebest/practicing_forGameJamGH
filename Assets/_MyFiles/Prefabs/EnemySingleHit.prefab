@@ -39,6 +39,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513858750234179357, guid: 3cc646854e4c1dc468e4fa614450f67c,
+        type: 3}
+      propertyPath: particleObject
+      value: 
+      objectReference: {fileID: 8542101024527876164, guid: 54b3bc1a62f0ed84f9eaab4950e10752,
+        type: 3}
     - target: {fileID: 1281703832466624004, guid: 3cc646854e4c1dc468e4fa614450f67c,
         type: 3}
       propertyPath: damagePlayer
@@ -62,12 +68,12 @@ PrefabInstance:
     - target: {fileID: 6469557242723921079, guid: 3cc646854e4c1dc468e4fa614450f67c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.21
+      value: -34.12
       objectReference: {fileID: 0}
     - target: {fileID: 6469557242723921079, guid: 3cc646854e4c1dc468e4fa614450f67c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.24
+      value: -9.06
       objectReference: {fileID: 0}
     - target: {fileID: 6469557242723921079, guid: 3cc646854e4c1dc468e4fa614450f67c,
         type: 3}

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForPies: 250
-  particleObject: {fileID: 2310377004175130935, guid: 42d1cb62c42e3dc4ab789ee1fadf1d12,
+  particleObject: {fileID: 2310377004175130935, guid: 0c953e203b1a6a946976aaecff1896a9,
     type: 3}
 --- !u!114 &8012234993054530721
 MonoBehaviour:
