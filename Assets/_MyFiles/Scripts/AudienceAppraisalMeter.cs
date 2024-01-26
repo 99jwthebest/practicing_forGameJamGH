@@ -7,6 +7,7 @@ public class AudienceAppraisalMeter : MonoBehaviour
 {
     public static AudienceAppraisalMeter instance;
 
+    [SerializeField] PlayerController playerController;
     //public int currentHealth;
     //public int maxHealth;
     //public Slider healthSlider;
@@ -48,7 +49,7 @@ public class AudienceAppraisalMeter : MonoBehaviour
     public void SetMaxComboValue(int health)
     {
         comboSlider.maxValue = health;
-        comboSlider.value = health;
+        //comboSlider.value = health;
 
         //comboNumberText.text = "Combo: " + comboNumber;
 
@@ -93,7 +94,12 @@ public class AudienceAppraisalMeter : MonoBehaviour
 
     private IEnumerator DegenComboN()
     {
+        if(currentComboValue >= maxComboValue)
+            playerController.MakePlayerFasterSpeedAppraisalMeter();
+
         yield return new WaitForSeconds(5f);
+
+        playerController.MakePlayerNormalSpeedAppraisalMeter();
 
         while (currentComboValue > 0)
         {

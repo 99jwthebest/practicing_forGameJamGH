@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4531039460508413751}
   - component: {fileID: 2345474262235492883}
   - component: {fileID: 1398746835907958171}
+  - component: {fileID: 8012234993054530721}
   m_Layer: 7
   m_Name: PiePickup
   m_TagString: Untagged
@@ -32,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 88.29, y: 12.03, z: -0.16280937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5874519934712536316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5795644731445091910
@@ -50,7 +52,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544970335229492760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -119,5 +121,123 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForPies: 250
-  particleObject: {fileID: 147026565817154767, guid: 5cd6c67ae627a324ca961348d7522afd,
+  particleObject: {fileID: 2310377004175130935, guid: 42d1cb62c42e3dc4ab789ee1fadf1d12,
     type: 3}
+--- !u!114 &8012234993054530721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544970335229492760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aece85a268a2ae64bb93573e2907c2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationForObstacle: {x: 0, y: 1, z: 0}
+  speed: 90
+--- !u!1001 &6200548202266016535
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2834439047223435361}
+    m_Modifications:
+    - target: {fileID: -8820689239833979538, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: adad8723522997d4297eaea7a30fe64c, type: 2}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1232834
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1232834
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1232834
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8660259
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.49999917
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 729096731903765227, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: adad8723522997d4297eaea7a30fe64c, type: 2}
+    - target: {fileID: 919132149155446097, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_Name
+      value: ClownCreamPie_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021491961226879268, guid: 5f6c59056a193f748a932db2a56e035c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: adad8723522997d4297eaea7a30fe64c, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f6c59056a193f748a932db2a56e035c, type: 3}
+--- !u!4 &5874519934712536316 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5f6c59056a193f748a932db2a56e035c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6200548202266016535}
+  m_PrefabAsset: {fileID: 0}

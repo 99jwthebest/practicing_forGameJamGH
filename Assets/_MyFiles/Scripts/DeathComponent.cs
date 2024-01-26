@@ -41,6 +41,7 @@ public class DeathComponent : MonoBehaviour
             //AudienceAppraisalMeter.instance.IncrementTimeForAudienceDrain(2);
             Instantiate(particleObject, transform.position, Quaternion.identity);
             ScoreManager.instance.IncrementScore(scoreForEnemy);
+            ScoreManager.instance.IncrementTotalEnemiesKilled();
             Destroy(gameObject);
 
         }

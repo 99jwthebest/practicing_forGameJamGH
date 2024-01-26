@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootBullet : MonoBehaviour
@@ -17,6 +18,8 @@ public class ShootBullet : MonoBehaviour
     LineRenderer gunLine;
 
     [SerializeField] Collider[] hitTargets;
+    [SerializeField] GameObject particleObject;
+
 
     void Awake()
     {
@@ -30,11 +33,12 @@ public class ShootBullet : MonoBehaviour
 
         if(Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            gunLine.SetPosition(1, shootHit.point);
+            //gunLine.SetPosition(1, shootHit.point);
+
         }
         else
         {
-            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+            //gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
         }
         
     }
@@ -52,11 +56,25 @@ public class ShootBullet : MonoBehaviour
                 //Add Damage
                 target.GetComponent<HealthComponent>().TakeDamage(damage);
                 Debug.Log("Enemy HITTTTTT!!!");
+
+                Instantiate(particleObject, transform.position, Quaternion.identity);
+                
                 Destroy(gameObject);
+            }
+            else if (target.CompareTag("WallPlatform"))
+            {
+                Destroy(gameObject);
+
             }
         }
 
+        if(transform.position == shootRay.origin + shootRay.direction * range)
+        {
+            Destroy(gameObject);
+        }
+
     }
+
 
     private void OnDrawGizmos()
     {

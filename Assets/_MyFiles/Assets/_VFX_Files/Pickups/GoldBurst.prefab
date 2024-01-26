@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7519646542171250375}
   - component: {fileID: 6228872507238173643}
   - component: {fileID: 2954080950998784391}
+  - component: {fileID: 130163894868136561}
   m_Layer: 0
   m_Name: GoldBurst
   m_TagString: Untagged
@@ -111,3 +112,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &130163894868136561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310377004175130935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3844e99323c2c844be93476a72bdd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliveTime: 2.5

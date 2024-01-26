@@ -5,9 +5,11 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    [SerializeField] float ticketCountTotal;
-    [SerializeField] float totalScore;
+    [SerializeField] int ticketCountTotal;
+    [SerializeField] int totalScore;
     [SerializeField] int totalPies;
+    [SerializeField] int totalEnemies;
+    
 
 
     private void Awake()
@@ -17,6 +19,7 @@ public class ScoreManager : MonoBehaviour
         ticketCountTotal = 0;
         totalScore = 0;
         totalPies = 0;
+        totalEnemies = 0;
     }
 
 
@@ -56,7 +59,7 @@ public class ScoreManager : MonoBehaviour
 
     public void IncrementPies()
     {
-        //totalPies ;
+        totalPies++;
         UIManager.instance.UpdatePieText();
     }
 
@@ -67,12 +70,17 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    public void IncrementTotalEnemiesKilled()
+    {
+        totalEnemies++;
+    }
+
     public float GetTicketCountTotal()
     {
         return ticketCountTotal;
     }
 
-    public float GetTotalScore()
+    public int GetTotalScore()
     {
         return totalScore;
     }
@@ -80,5 +88,10 @@ public class ScoreManager : MonoBehaviour
     public int GetTotalPies()
     {
         return totalPies;
+    }
+
+    public int GetTotalEnemies()
+    {
+        return totalEnemies;
     }
 }

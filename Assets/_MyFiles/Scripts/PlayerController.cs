@@ -6,8 +6,9 @@ using UnityEngine.SocialPlatforms;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] float defaultSpeed;
     [SerializeField] float runSpeed;
-    [SerializeField] float platformSpeed;
+    [SerializeField] float fullAppraisalSpeed;
     float move;
 
     [SerializeField] Rigidbody playerRigidBody;
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     int shootableMask;
     LineRenderer gunLine;
 
+    bool firstGrounded = true;
+    //int recoilAnimation;
+
 
 
 
@@ -49,10 +53,13 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         facingRight = true;
         tR.emitting = false;
+        defaultSpeed = runSpeed;
+
+        //recoilAnimation = Animator.StringToHash("PistolShootRecoil");
 
     }
 
-  
+
     public bool GetGroundedRealTime()
     {
         groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
@@ -61,10 +68,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (CountupTimer.instance.gameEnd)
+        {
+            playerAnimator.enabled = false;
+            return;
+        }
+
         //if (isDashing)
         //    return;
+        //animator.CrossFade(recoilAnimation, animationPlayTransition);
 
         //MoveCharacterMovingPlatforms();
+        firstGrounded = true;
+        playerAnimator.SetBool("firstGrounded", firstGrounded);
 
         DoubleJump();
         Jump();
@@ -84,10 +101,13 @@ public class PlayerController : MonoBehaviour
         float sneaking = Input.GetAxisRaw("Fire3");
         playerAnimator.SetFloat("sneaking", sneaking);
 
+        float verticalSpeed = playerRigidBody.velocity.magnitude;
+        playerAnimator.SetFloat("verticalSpeed", verticalSpeed);
+
         //if (onMovingPlatform)
         //    playerRigidBody.velocity = new Vector3(move * platformSpeed, playerRigidBody.velocity.y, 0);
         //else
-            playerRigidBody.velocity = new Vector3(move * runSpeed, playerRigidBody.velocity.y, 0);
+        playerRigidBody.velocity = new Vector3(move * runSpeed, playerRigidBody.velocity.y, 0);
 
 
         if (move > 0 && !facingRight)
@@ -104,8 +124,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            isGrounded = false;
-            playerAnimator.SetBool("isGrounded", isGrounded);
+            firstGrounded = false;
+            playerAnimator.SetBool("firstGrounded", firstGrounded);
             playerRigidBody.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
             jumpCount = 1;
         }
@@ -169,6 +189,16 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidBody.isKinematic = false;
         //onMovingPlatform = true;
+    }
+
+    public void MakePlayerFasterSpeedAppraisalMeter()
+    {
+        runSpeed = fullAppraisalSpeed;
+    }
+
+    public void MakePlayerNormalSpeedAppraisalMeter()
+    {
+        runSpeed = defaultSpeed;
     }
 
     private void Flip()

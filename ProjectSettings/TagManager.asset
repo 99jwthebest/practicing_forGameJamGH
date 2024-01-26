@@ -9,6 +9,7 @@ TagManager:
   - EnemyAi
   - MovingPlatform
   - WallSlide
+  - WallPlatform
   layers:
   - Default
   - TransparentFX

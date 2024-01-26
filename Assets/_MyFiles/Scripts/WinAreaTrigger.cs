@@ -20,9 +20,9 @@ public class WinAreaTrigger : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
+            CountupTimer.instance.gameEnd = true;
             UIManager.instance.ActivateWinMenuUI();
             //CountupTimer.instance.SetTimeScale(0f);
-
         }
     }
 }

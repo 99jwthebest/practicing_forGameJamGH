@@ -25,7 +25,7 @@ public class FireBullet : MonoBehaviour
         {
             PlayerController playerController = transform.root.GetComponent<PlayerController>();
 
-            if(Input.GetAxisRaw("Fire1") > 0 && nextBullet < Time.time)
+            if(Input.GetKeyDown(KeyCode.H) && nextBullet < Time.time)
             {
                 nextBullet = Time.time + timeBetweenBullets;
                 Vector3 rot;

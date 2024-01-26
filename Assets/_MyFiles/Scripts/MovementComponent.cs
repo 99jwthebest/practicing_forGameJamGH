@@ -22,6 +22,9 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] bool movingToEndPos;
     [SerializeField] Vector3 directionToMoveGlobal;
     [SerializeField] float speed;
+    [SerializeField] bool facingRight;
+    [SerializeField] Transform enemyTransform;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,6 @@ public class MovementComponent : MonoBehaviour
         endPosition = startPosition;
 
         DirectionForObjectToMove();
-
         
     }
 
@@ -95,6 +97,8 @@ public class MovementComponent : MonoBehaviour
                     if (distancedTraveled.x >= travelDistance)
                     {
                         movingToEndPos = false;
+                        facingRight = false;
+                        Flip();
                     }
                 }
                 else
@@ -104,6 +108,9 @@ public class MovementComponent : MonoBehaviour
                     if (distancedTraveled.x <= 0)
                     {
                         movingToEndPos = true;
+                        facingRight = true;
+
+                        Flip();
 
                     }
                 }
@@ -179,6 +186,22 @@ public class MovementComponent : MonoBehaviour
         }
 
         //return directionToMove;
+    }
+
+    private void Flip()
+    {
+        if (facingRight)
+        {
+            float direction = 0;
+            enemyTransform.rotation = new Quaternion(transform.rotation.x, direction, transform.rotation.z, transform.rotation.w);
+
+        }
+        else
+        {
+            float direction = -180;
+            enemyTransform.rotation = new Quaternion(transform.rotation.x, direction, transform.rotation.z, transform.rotation.w);
+
+        }
     }
 
     private void OnTriggerEnter(Collider collision)

@@ -22,6 +22,7 @@ public class CountupTimer : MonoBehaviour
     private TextMeshProUGUI secondsText;
     [SerializeField]
     private TextMeshProUGUI millisecondsText;
+    public bool gameEnd;
 
     private void Awake()
     {
@@ -40,6 +41,9 @@ public class CountupTimer : MonoBehaviour
     {
         
         if (TimeStopped())
+            return;
+
+        if (gameEnd == true)
             return;
 
         currentTime += 1 * Time.deltaTime;

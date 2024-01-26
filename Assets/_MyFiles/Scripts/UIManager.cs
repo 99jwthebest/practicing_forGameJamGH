@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI ticketPickupCountText;
     [SerializeField] TextMeshProUGUI totalScoreText;
     [SerializeField] TextMeshProUGUI pieText;
+    [SerializeField] TextMeshProUGUI groundSlamText;
 
 
     [SerializeField] GameObject pauseMenuUI;
@@ -39,24 +40,29 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthText.text = "Health: " + playerHealthComponent.GetCurrentHealth().ToString();
+        healthText.text = "" + playerHealthComponent.GetCurrentHealth().ToString();
     }
 
     public void UpdateTicketCountText()
     {
-        ticketPickupCountText.text = "Tickets: " + ScoreManager.instance.GetTicketCountTotal();
+        ticketPickupCountText.text = "" + ScoreManager.instance.GetTicketCountTotal();
 
     }
 
     public void UpdateTotalScoreText()
     {
-        totalScoreText.text = "Score: " + ScoreManager.instance.GetTotalScore();
+        totalScoreText.text = "" + ScoreManager.instance.GetTotalScore();
 
     }
 
     public void UpdatePieText()
     {
-        pieText.text = "Pies: " + AmmoComponent.instance.GetAmmo();
+        pieText.text = "" + AmmoComponent.instance.GetAmmo();
+
+    }
+    public void UpdateGroundSlamText()
+    {
+        groundSlamText.text = "" + GroundSlamComponent.instance.GetGroundSlamAmount();
 
     }
 
