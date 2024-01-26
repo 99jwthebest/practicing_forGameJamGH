@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] int totalEnemies;
     
 
+    int twice;
+    int twiceForTicket;
 
     private void Awake()
     {
@@ -45,7 +47,7 @@ public class ScoreManager : MonoBehaviour
         UIManager.instance.UpdateTicketCountText();
     }
 
-    public void IncrementScore(int amount)
+    public void IncrementScore(float amount)
     {
         totalScore += amount;
         UIManager.instance.UpdateTotalScoreText();
