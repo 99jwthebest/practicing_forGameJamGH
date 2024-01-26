@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 880464776265991118}
   - component: {fileID: 928645667849611502}
   - component: {fileID: 6829067563750476449}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ticket_Placeholder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985495223850364389}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 80.98, y: 8.28, z: 0.068380356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -119,3 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForTicket: 50
+  particleObject: {fileID: 2310377004175130935, guid: cb41b11c4a623424c8295d1facba72fb,
+    type: 3}

@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyDamageComponent : MonoBehaviour
 {
     [SerializeField] HealthComponent playerHealthComponent;
-    [SerializeField] float damagePlayer;
-    int twice;
+    [SerializeField] int damagePlayer;
 
     void Start()
     {
@@ -24,14 +23,9 @@ public class EnemyDamageComponent : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             playerHealthComponent.TakeDamage(damagePlayer);
-            twice++;
             
-            if(twice == 2)
-            {
-                twice = 0;
-                UIManager.instance.UpdateHealth();
-                Debug.Log("Enemy Damaged Player!!!");
-            }
+            UIManager.instance.UpdateHealth();
+            Debug.Log("Enemy Damaged Player!!!");
         }
 
     }

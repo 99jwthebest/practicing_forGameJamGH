@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4531039460508413751}
   - component: {fileID: 2345474262235492883}
   - component: {fileID: 1398746835907958171}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PiePickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544970335229492760}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 88.29, y: 12.03, z: -0.16280937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b421f13e277e20e49a7fbe9cdf83e52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreForPies: 200
+  scoreForPies: 250
   particleObject: {fileID: 147026565817154767, guid: 5cd6c67ae627a324ca961348d7522afd,
     type: 3}

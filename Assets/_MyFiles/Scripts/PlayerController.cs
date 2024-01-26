@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TrailRenderer tR;
 
     [SerializeField] public bool onMovingPlatform;
+    [SerializeField] Vector3 moveDir;
+    Ray shootRay;
+    RaycastHit shootHit;
+    int shootableMask;
+    LineRenderer gunLine;
 
 
 
@@ -47,10 +52,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+  
+    public bool GetGroundedRealTime()
     {
-
-        
+        groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        return groundCollisions.Length > 0;
     }
 
     void Update()
@@ -58,11 +64,13 @@ public class PlayerController : MonoBehaviour
         //if (isDashing)
         //    return;
 
+        //MoveCharacterMovingPlatforms();
+
         DoubleJump();
         Jump();
 
         groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
-        if(groundCollisions.Length > 0)
+        if (groundCollisions.Length > 0)
             isGrounded = true;
         else
             isGrounded = false;
@@ -70,6 +78,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("isGrounded", isGrounded);
 
         move = Input.GetAxis("Horizontal");
+        moveDir = new Vector3(move, 0, 0);
         playerAnimator.SetFloat("speed", Mathf.Abs(move));
 
         float sneaking = Input.GetAxisRaw("Fire3");
@@ -89,10 +98,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash)
             StartCoroutine(Dash());
 
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    UIManager.instance.UpdateHealth();
-        //}
     }
 
     private void Jump()
@@ -112,6 +117,7 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded && Input.GetKeyDown(KeyCode.Space) && jumpCount >= 1)
         {
             Debug.Log("Only in here when in air!");
+            playerRigidBody.Sleep();
             playerRigidBody.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
 
             jumpCount = 0;
@@ -140,6 +146,29 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    public void MoveCharacterOnMovingPlatforms()
+    {
+        playerRigidBody.isKinematic = true;
+        //onMovingPlatform = true;
+    }
+
+    public void MoveCharacterMovingPlatforms()
+    {
+        if(playerRigidBody.isKinematic)
+        {
+            Debug.Log("on the moving Platss!!!");
+            transform.localPosition += moveDir.normalized * 3 * Time.deltaTime;
+
+        }
+
+    }
+
+    public void MoveCharacterOffMovingPlatforms() 
+    {
+        playerRigidBody.isKinematic = false;
+        //onMovingPlatform = true;
     }
 
     private void Flip()

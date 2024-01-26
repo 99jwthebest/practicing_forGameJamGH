@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class PickupComponent : MonoBehaviour
 {
-    [SerializeField] float scoreForTicket;
+    [SerializeField] int scoreForTicket;
     [SerializeField] GameObject particleObject;
 
 

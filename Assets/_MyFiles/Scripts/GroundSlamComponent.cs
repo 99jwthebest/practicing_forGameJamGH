@@ -5,7 +5,11 @@ using UnityEngine;
 public class GroundSlamComponent : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] Rigidbody playerRigidbody;
 
+    [SerializeField] bool isSlamming;
+    [SerializeField] float timeBetweenSlams = 1f;
+    float nextSlam;
     [SerializeField] float range = 20f;
     [SerializeField] float damage = 5f;
     [SerializeField] float speed = 5f;
@@ -54,10 +58,12 @@ public class GroundSlamComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && !isSlamming 
+            && !playerController.GetIsGrounded() 
+            && nextSlam < Time.time)
         {
             StartGroundSlam();
-            Debug.Log("What the fuck?!?!?");
+            Debug.Log(" Ground slam?!?!?");
 
         }
 
@@ -67,30 +73,21 @@ public class GroundSlamComponent : MonoBehaviour
     public void StartGroundSlam()
     {
 
-        //currentComboValue += refillBar;
-        //SetComboValue(currentComboValue);
-
         if (degenCombo != null)
         {
             StopCoroutine(degenCombo);
         }
 
         degenCombo = StartCoroutine(GroundSlamTravel());
-
-        //if (currentComboValue >= maxComboValue)
-        //{
-        //    currentComboValue = maxComboValue;
-        //}
-        //if (currentComboValue <= 0)
-        //{
-        //    currentComboValue = 0;
-        //}
+       
     }
 
     private IEnumerator GroundSlamTravel()
     {
         yield return new WaitForSeconds(.1f);
         Debug.Log("It is heree!!!!!?!?");
+        isSlamming = true;
+        nextSlam = Time.time + timeBetweenSlams;
 
         shootRay.origin = transform.position; // instantiate at the muzzle location
         shootRay.direction = -transform.up;
@@ -105,11 +102,11 @@ public class GroundSlamComponent : MonoBehaviour
             //gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
         }
 
-        while (!playerController.GetIsGrounded())
+        while (!playerController.GetGroundedRealTime())
         {
 
             Debug.Log("WHYYYYY!!!!!!!");
-            transform.position = Vector3.MoveTowards(transform.position, shootRay.origin + shootRay.direction * range, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, shootRay.origin + shootRay.direction * range, speed * 0.007f);
 
             hitTargets = Physics.OverlapSphere(slashPoint_Transform.position, slashPoint_Range);
             foreach (var target in hitTargets)
@@ -127,12 +124,12 @@ public class GroundSlamComponent : MonoBehaviour
 
                 }
             }
-            yield return new WaitForSeconds(.01f);
+            yield return new WaitForSeconds(0.007f);
         }
+        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0, playerRigidbody.velocity.z);
 
-        //comboNumber = 0;
-        //comboNumberText.text = "Combo: " + comboNumber;
-        //comboObj.SetActive(false);
+        playerRigidbody.AddForce(new Vector3(0, 20, 0), ForceMode.Impulse);
+        isSlamming = false;
 
         Instantiate(particleObject, transform.position, Quaternion.identity);
         degenCombo = null;
